@@ -6,12 +6,14 @@
   <router-view/>
 </template>
 
-<script>
+<script setup>
+import { onMounted } from 'vue'
+import { useStore } from 'vuex';
 
-  export default {
+const store = useStore()
 
-  }
-  
+onMounted(() => store.dispatch('loadProducts'))
+
 </script>
 
 

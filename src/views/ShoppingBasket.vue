@@ -2,9 +2,9 @@
     <div class="basket">
       <div class="items">
   
-        <div class="item">
+        <div class="item" v-for="card of store.state.card" :key="card">
           <div class="remove">Remove item</div>
-          <div class="photo"><img src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg" alt=""></div>
+          <div class="photo"><img :src="card.image" alt=""></div>
           <div class="description">Mens Casual Premium Slim Fit T-Shirts </div>
           <div class="price">
             <span class="quantity-area">
@@ -21,17 +21,12 @@
     </div>
   </template>
   
-  <script>
-  
-  export default {
-    name: 'ShoppingBasket',
-  
-    methods: {
-     
-    },
-   
-  }
-  </script>
+<script setup>
+import { useStore } from 'vuex';
+const store = useStore()
+
+
+</script>
   
   <style lang="scss">
   
