@@ -1,6 +1,6 @@
 <template>
     <div class="basket">
-      <div class="items" v-if="store.state.cards.lenght < 1">
+      <div class="items" v-if="store.state.cards.lenght != 0">
         <div class="item" v-for="card of store.state.cards" :key="card">
           <div class="remove" @click="removeToBag(card)">Remove item</div>
           <div class="photo"><img :src="card.image" alt=""></div>
