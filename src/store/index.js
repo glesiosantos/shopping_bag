@@ -13,7 +13,6 @@ export default createStore({
 
     addCard(state, product) {
       state.cards.push(product)
-      console.log(state.cards)
     },
 
     removeToCard(state, id) {
