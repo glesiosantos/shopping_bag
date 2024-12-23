@@ -1,11 +1,24 @@
 <template>
     <div class="home">
       <div class="products">
-        <div class="product" v-for="product in store.state.products" :key="product.id">
-          <div class="product-image" :style="{backgroundImage: 'url('+ product.image + ')'}"></div>
+        <div class="product" 
+            :class="{ 'inBag' : isInCard(product.id) }"
+            v-for="product in store.state.products" :key="product.id">
+          <div 
+            class="product-image" 
+            :style="{backgroundImage: 'url('+ product.image + ')'}"
+            ></div>
           <h4>{{product.title}}</h4>
           <p class="price">US$ {{product.price.toFixed(2)}}</p>
-          <button @click="addToBag(product)"  :disabled="!isInCard(product.id)">Add to bag</button>
+          <button 
+          v-if="!isInCard(product.id)"
+            @click.stop="addToBag(product)"  
+          >Add to bag</button>
+          <button 
+          v-else
+            class="remove"
+            @click.stop="removeToBag(product)"  
+          >remove to bag</button>
         </div>
       </div>
     </div>
@@ -20,9 +33,12 @@ function addToBag (product) {
   store.dispatch('addToCard', product)
 }
 
+function removeToBag(product) {
+  store.dispatch('removeToCard',product.id)
+}
+
 function isInCard (id) {
   const result = store.state.cards.find(item => item.id === id)
-  console.log("**** *** ** ** **",result)
   return result
 }
 

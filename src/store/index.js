@@ -8,12 +8,17 @@ export default createStore({
   },
   mutations: {
     loadProducts(state, products) {
-      console.log(products)
       state.products = products
     },
 
     addCard(state, product) {
       state.cards.push(product)
+      console.log(state.cards)
+    },
+
+    removeToCard(state, id) {
+      let updateBag = state.cards.filter(item => item.id !== id)
+      state.cards = updateBag
     }
   },
   actions: {
@@ -25,6 +30,10 @@ export default createStore({
 
     addToCard({commit}, product) {
       commit('addCard', product)
+    },
+
+    removeToCard({commit}, id) {
+      commit('removeToCard', id)
     }
   },
   modules: {

@@ -1,18 +1,22 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> -
-    <router-link to="/basket">Shopping Bag (0)</router-link> 
+    <router-link to="/basket">Shopping Bag ({{totalItemCard()}})</router-link> 
   </div>
   <router-view/>
 </template>
 
 <script setup>
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex';
 
 const store = useStore()
 
 onMounted(() => store.dispatch('loadProducts'))
+
+function totalItemCard () {
+  return store.state.cards.length
+}
 
 </script>
 
