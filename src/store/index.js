@@ -33,7 +33,9 @@ export default createStore({
     },
 
     removeToCard({commit}, id) {
-      commit('removeToCard', id)
+      if(confirm('Are you sure you want to remove the item from card?')) {
+        commit('removeToCard', id)
+      }
     }
   },
   modules: {
