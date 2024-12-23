@@ -16,6 +16,7 @@ import { useStore } from 'vuex';
 const store = useStore()
 
 onMounted(() => store.dispatch('loadProducts'))
+onMounted(() => store.dispatch('loadCards'))
 
 function totalItemCard () {
   return store.state.cards.length
